@@ -1,103 +1,122 @@
-import Image from "next/image";
+"use client";
+import { HeroSection } from "@/components/sections/hero-section";
+import { AboutSection } from "@/components/sections/about-section";
+import { ProjectsSection } from "@/components/sections/projects-section";
+import { BlogsSection } from "@/components/sections/blogs-section";
+import { ContactSection } from "@/components/sections/contact-section";
+import { Footer } from "@/components/footer";
 
-export default function Home() {
+// Static Data
+const personalInfo = {
+  name: "Muhammad Husnain Rashid",
+  title: "Fullstack Web Developer",
+  subtitle: "React.js | JavaScript | Next.js | MERN Stack",
+  bio: "Passionate fullstack developer with expertise in modern web technologies. I create scalable, user-friendly applications that solve real-world problems.",
+  email: "husnain@example.com",
+  phone: "+92 300 1234567",
+  location: "Pakistan",
+  avatar: "/placeholder.svg?height=150&width=150&text=HR",
+  resume: "/resume.pdf",
+};
+
+const skills = [
+  { name: "React.js", level: 95 },
+  { name: "Next.js", level: 90 },
+  { name: "JavaScript", level: 92 },
+  { name: "Node.js", level: 88 },
+  { name: "MongoDB", level: 85 },
+  { name: "Express.js", level: 87 },
+  { name: "TypeScript", level: 80 },
+  { name: "React Native", level: 75 },
+];
+
+const projects = [
+  {
+    id: 1,
+    title: "E-Commerce Platform",
+    description:
+      "Full-stack e-commerce solution with React, Node.js, and MongoDB",
+    image: "/placeholder.svg?height=200&width=300&text=E-Commerce",
+    technologies: ["React", "Node.js", "MongoDB", "Express"],
+    github: "https://github.com",
+    live: "https://example.com",
+    stars: 45,
+    forks: 12,
+  },
+  {
+    id: 2,
+    title: "Task Management App",
+    description: "Collaborative task management with real-time updates",
+    image: "/placeholder.svg?height=200&width=300&text=Task-App",
+    technologies: ["Next.js", "Socket.io", "PostgreSQL", "Prisma"],
+    github: "https://github.com",
+    live: "https://example.com",
+    stars: 32,
+    forks: 8,
+  },
+  {
+    id: 3,
+    title: "Social Media Dashboard",
+    description: "Analytics dashboard for social media management",
+    image: "/placeholder.svg?height=200&width=300&text=Dashboard",
+    technologies: ["React", "Chart.js", "Firebase", "Tailwind"],
+    github: "https://github.com",
+    live: "https://example.com",
+    stars: 28,
+    forks: 6,
+  },
+];
+
+const blogs = [
+  {
+    id: 1,
+    title: "Building Scalable React Applications",
+    excerpt:
+      "Learn best practices for creating maintainable and scalable React applications...",
+    date: "2024-01-15",
+    readTime: "5 min read",
+    image: "/placeholder.svg?height=150&width=250&text=React-Blog",
+    tags: ["React", "JavaScript", "Best Practices"],
+  },
+  {
+    id: 2,
+    title: "Next.js 14: What's New and Exciting",
+    excerpt: "Explore the latest features and improvements in Next.js 14...",
+    date: "2024-01-10",
+    readTime: "7 min read",
+    image: "/placeholder.svg?height=150&width=250&text=NextJS-Blog",
+    tags: ["Next.js", "Web Development", "Performance"],
+  },
+  {
+    id: 3,
+    title: "MERN Stack Development Guide",
+    excerpt: "Complete guide to building full-stack applications with MERN...",
+    date: "2024-01-05",
+    readTime: "10 min read",
+    image: "/placeholder.svg?height=150&width=250&text=MERN-Blog",
+    tags: ["MERN", "MongoDB", "Express", "React", "Node.js"],
+  },
+];
+
+export default function Page() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen bg-black">
+      {/* Very subtle accent gradients - only for minimal highlights */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/3 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gray-500/3 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600/3 rounded-full blur-3xl"></div>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className="relative z-10">
+        <HeroSection personalInfo={personalInfo} />
+        <AboutSection skills={skills} />
+        <ProjectsSection projects={projects} />
+        <BlogsSection blogs={blogs} />
+        <ContactSection personalInfo={personalInfo} />
+        <Footer />
+      </div>
     </div>
   );
 }
